@@ -5,12 +5,18 @@ import java.util.Random;
 public class Bataille {
 
 	public static void main(String[] args) {
-		String [] color = {"pique","carreau","trèfle","coeur"} ;
-		int [] value = {1,2,3,4,5,6,7,8,9,10,11,12,13};
-		Random rand = new Random();
-		int chiffreAleatoire = rand.nextInt(value.length);
-		System.out.println(value[chiffreAleatoire]);
-			
+		//ON PEUT SUREMENT CREER UN AUTRE TABLEAU QUI RECUPERE LES CARTES CREER ET LES METS DANS UN JEU DE CARTE
+		/*Random rand = new Random();
+		int randVal = rand.nextInt();
+		int randColor = rand.nextInt(lesColors.length);
+		*/
+		for(int i=0;i<=12;i++) {
+			for(int y=0; y<=3;y++) {
+				Carte ciy = new Carte();
+				System.out.println(ciy.toString(i,y));
+			}	
+		}
+		
 	}
 
 }
