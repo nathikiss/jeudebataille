@@ -31,7 +31,7 @@ public class Bataille {
 		/*INITIALISATION DES JOUEURS*/
 		Joueur Joueur1= new Joueur(nomJoueur1,paquetJoueur1);
 		Joueur Joueur2= new Joueur(nomJoueur2,paquetJoueur2);
-		int nbPartie=0;
+		int nbParties=0;
 		int egalite=0;
 		while(Joueur1.getPaquetJoueur().size()>0 && Joueur2.getPaquetJoueur().size()>0  ) //Tant que le joueur1 à encore des cartes
 		{	
@@ -40,28 +40,38 @@ public class Bataille {
 			//ou que le paquet du joueur1 n'est pas vide
 			
 			/* JEU BATAILLE*/
+				
+				if(nbParties>=100) {
+					break;
+				}
+				
 				Carte carteJ1=Joueur1.tireCarte();
 				Carte carteJ2=Joueur2.tireCarte();
 				if(carteJ1.getValue()>carteJ2.getValue())
 				{
 					Joueur1.gagnePrend(carteJ1, carteJ2);
 					Joueur1.augmentePoints();
+					System.out.print(Joueur1.getName()+" gagne \n");
+					
 				}
 				else if(carteJ2.getValue()>carteJ1.getValue()) 
 				{
 					Joueur2.gagnePrend(carteJ1, carteJ2);
 					Joueur2.augmentePoints();
+					System.out.print(Joueur2.getName()+" gagne \n");
 				}
 				else {
 					//Si égalité les deux joueurs récup leurs cartes et mélangent leurs paquets
 					Joueur1.egalite(carteJ1);
 					Joueur2.egalite(carteJ2);
+					System.out.print("EGALITE \n"); 
 					egalite++;
 				}
-				nbPartie++;
-				if (nbPartie>=250) { //S'arrete au bout de 250 parties 
-					break;
-				}
+				System.out.print("score "+Joueur1.getName()+" :"+Joueur1.getPoints()+"\n"+
+						"score "+Joueur2.getName()+" :"+Joueur2.getPoints()+"\n");
+				nbParties++;
+				
+				
 		}	
 		scanner.close();
 		String vainqueur = "personne";
@@ -72,7 +82,7 @@ public class Bataille {
 			vainqueur=Joueur2.getName();
 		}
 		System.out.print("PARTIE TERMINEE \n"+"Le vainqueur est "+vainqueur+"\n"+
-		Joueur1+""+Joueur2+"nombre de partie:"+nbPartie+"\n"+"Nombre d'égalité: "+egalite);
+		Joueur1+""+Joueur2+"nombre de partie:"+nbParties+"\n"+"Nombre d'égalité: "+egalite);
 	}
 
 }
