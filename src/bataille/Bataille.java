@@ -8,32 +8,21 @@ import java.util.Collections;
 public class Bataille {
 
 	public static void main(String[] args) {
-		//ON PEUT SUREMENT CREER UN AUTRE TABLEAU QUI RECUPERE LES CARTES CREER ET LES METS DANS UN JEU DE CARTE
-		/*Random rand = new Random();
-		int randVal = rand.nextInt();
-		int randColor = rand.nextInt(lesColors.length);
-		*/
-		//creation d'un objet afin de recupérer la longueur des tableaux
-		Carte n1 = new Carte();
-		int nbVals= n1.getValue().length;
-		int nbColors= n1.getColor().length;
 		
-		
-		//Mettre le tout dans un PAQUET (une ArrayList)
-		ArrayList<String> paquet = new ArrayList< String>();
-		for(int i=0;i<nbVals;i++) {
-			for(int y=0; y<nbColors;y++) {
-				Carte ciy = new Carte();
-				paquet.add(ciy.getValue(i)+" "+ciy.getColor(y));
-				/*System.out.println(ciy.toString(i,y));*/
-			
-			
-			}	
+		int NB_CARTE_TOTAL=52;
+		ArrayList<Carte> paquet = new ArrayList<Carte>();
+		//2=premiere chiffre et 15 parce qu'il y'a 13 cartes entre 2 et 15;on a besoin de13 carte
+		for(int i=2;i<=14;i++) {
+			String[] colors= {"PIQUE","TREFLES","COEUR","CARREAU"};
+			for(String color : colors) {	
+				paquet.add(new Carte(color,i));
+			}
 		}
 		System.out.print(paquet.size()+"\n");
 		System.out.print("Voici notre paquet: " + paquet+"\n");
 		Collections.shuffle(paquet);
 		System.out.print("Voici notre paquet mélangé: " + paquet+"\n");
+		System.out.print(paquet.get(0).getValue());///SELECTIONNE UNIQUEMENT LE CHIFFRE
 		/*Séparons le paquet en deux
 		
 		
