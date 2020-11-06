@@ -4,7 +4,7 @@ import java.util.List;
 public class Joueur {
 	//ATTRIBUTS
 	private int points;
-	private String name;
+	private String name = "ORDI";
 	private List<Carte> paquetJoueur;
 	//CONSTRUCTEUR
 	public Joueur(String name,List<Carte> paquetJoueur) {
@@ -45,9 +45,9 @@ public class Joueur {
 		return paquetJoueur;
 	}
 	public String toString() {
-		return  name+"\n"
-				+"a "+points+" points \n"
-				+"Voici son Paquet : "+paquetJoueur+"\n";
+		return  name
+				+" a "+points+" points \n"
+				;
 	}
 	
 }
