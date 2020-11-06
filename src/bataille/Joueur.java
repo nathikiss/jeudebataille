@@ -12,16 +12,32 @@ public class Joueur {
 		this.name=name;
 		this.paquetJoueur=paquetJoueur;
 	}
+	
+	/*LES METHODES*/
 	public Carte tireCarte() {
-		Carte carteTiree= this.paquetJoueur.get(paquetJoueur.size()-1);//CarteTirée=dernière carte du paquet
-		paquetJoueur.remove(paquetJoueur.get(paquetJoueur.size() - 1));//On retire du paquet la carte tirée
-		System.out.print(name+" joue "+carteTiree+"\n");
-		return carteTiree;
+		if (paquetJoueur.size()>0) {
+			Carte carteTiree= this.paquetJoueur.get(paquetJoueur.size()-1);//CarteTirée=dernière carte du paquet
+		
+			paquetJoueur.remove(paquetJoueur.get(paquetJoueur.size() - 1));
+			return carteTiree;//System.out.print(name+" joue "+carteTiree+"\n"); //AFFICHE LA CARTE JOUE PAR LE JOUEUR
+			}
+		return null;
 	}
+	
+	/*public String toutRetirer() {
+		//Carte carteTiree= this.paquetJoueur.get(paquetJoueur.size()-1);//CarteTirée=dernière carte du paquet
+		while(!paquetJoueur.isEmpty()) {//tant que le paquet contient qlq chose
+			paquetJoueur.remove(paquetJoueur.get(paquetJoueur.size() - 1));
+			System.out.print(paquetJoueur);
+		}
+		//System.out.print(name+" joue "+carteTiree+"\n"); //AFFICHE LA CARTE JOUE PAR LE JOUEUR
+		return "Le paquet est vide"+paquetJoueur;
+	}*/
+	
 	//Methode le joueur gagne et prend les deux cartes
 	public void gagnePrend(Carte carteJ1, Carte carteJ2)
 	    {
-	        System.out.print(name+" gagne \n");
+	        //System.out.print(name+" gagne \n");
 	        this.paquetJoueur.add(carteJ1);
 	        this.paquetJoueur.add(carteJ2);
 	    }
