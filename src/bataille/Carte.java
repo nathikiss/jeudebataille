@@ -23,7 +23,7 @@ public class Carte {
 	}
 		
 	public String toString(){
-		return "La carte est un "+value +" de "+color;
+		return value +" de "+color;
 		
 	}
 }
