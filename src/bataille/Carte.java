@@ -1,7 +1,4 @@
 package bataille;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Collection;
 public class Carte {
 	
 	//attributs d'une Carte

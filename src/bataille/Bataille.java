@@ -1,7 +1,4 @@
 package bataille;
-
-import java.util.Random;
-import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,18 +8,21 @@ public class Bataille {
 
 	public static void main(String[] args) {
 		
-		int NB_CARTE_TOTAL=52;
-		ArrayList<Carte> paquet = new ArrayList<Carte>();//TANT QUE 2(carte plus petite valeur) est inférieur ou egale à 14 on l'incrémente et on creer notre paquet
+		//TANT QUE i=2(plus petite valeur), qu'il est inférieur ou egale à 14(plus grande valeur)
+		//on l'incrémente et on creer notre paquet
+		ArrayList<Carte> paquet = new ArrayList<Carte>();
 		for(int i=2;i<=14;i++) {
 			String[] colors= {"PIQUE","TREFLE","COEUR","CARREAU"};
 			for(String color : colors) {//Pour chaque couleur parmi les 4couleurs
 				paquet.add(new Carte(color,i));//on creer 13 cartes
 			}
 		}
+		//Mélange le Paquet
 		Collections.shuffle(paquet);
-		List<Carte> paquetJoueur1 = new ArrayList<>(paquet.subList(0,(paquet.size()/2)));//PREMIERE MOITIE DU PAQUET 
-		//new ARRAYLIST obligatoire CaR sublist n'accepte pas la restructuration de la liste
+		//Création des deux paquets des joueurs
+		List<Carte> paquetJoueur1 = new ArrayList<>(paquet.subList(0,(paquet.size()/2)));
 		List<Carte> paquetJoueur2 = new ArrayList<>(paquet.subList(paquet.size()/2,paquet.size()));//DEUXIEME MOITIE
+		//Joueurs entre leurs noms
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Entrer le nom du joueur 1 :");
 		String nomJoueur1= scanner.nextLine();
@@ -33,14 +33,11 @@ public class Bataille {
 		Joueur Joueur2= new Joueur(nomJoueur2,paquetJoueur2);
 		int nbParties=0;
 		int egalite=0;
-		while(Joueur1.getPaquetJoueur().size()>0 && Joueur2.getPaquetJoueur().size()>0  ) //Tant que le joueur1 à encore des cartes
+		//Tant que le joueur1 et le joueur2 ont encore des cartes 
+		while(Joueur1.getPaquetJoueur().size()>0 && Joueur2.getPaquetJoueur().size()>0  )
 		{	
-			//Tant que la reponse du jour est positive
-			//Et que le paquet du joueur1 n'est pas vide
-			//ou que le paquet du joueur1 n'est pas vide
-			
-			/* JEU BATAILLE*/
-				
+			/* Boucle de JEU BATAILLE*/
+				//Condition pour limiter le nombre de partie à 100
 				if(nbParties>=100) {
 					break;
 				}
@@ -49,8 +46,10 @@ public class Bataille {
 				Carte carteJ2=Joueur2.tireCarte();
 				if(carteJ1.getValue()>carteJ2.getValue())
 				{
+					//Le Joueur Prend les deux cartes passées en paramètres
 					Joueur1.gagnePrend(carteJ1, carteJ2);
 					Joueur1.augmentePoints();
+					//Affiche le gagnant de la bataille
 					System.out.print(Joueur1.getName()+" gagne \n");
 					
 				}
@@ -61,7 +60,7 @@ public class Bataille {
 					System.out.print(Joueur2.getName()+" gagne \n");
 				}
 				else {
-					//Si égalité les deux joueurs récup leurs cartes et mélangent leurs paquets
+					//Si égalité les deux joueurs récupèrent leurs cartes et mélangent leurs paquets
 					Joueur1.egalite(carteJ1);
 					Joueur2.egalite(carteJ2);
 					System.out.print("EGALITE \n"); 

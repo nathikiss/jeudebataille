@@ -6,7 +6,7 @@ public class Joueur {
 	private int points;
 	private String name = "ORDI";
 	private List<Carte> paquetJoueur;
-	//CONSTRUCTEUR
+	//CONSTRUCTEURS
 	public Joueur(String name,List<Carte> paquetJoueur) {
 		this.points=0;
 		this.name=name;
@@ -34,14 +34,14 @@ public class Joueur {
 		return "Le paquet est vide"+paquetJoueur;
 	}*/
 	
-	//Methode le joueur gagne et prend les deux cartes
+	//Le joueur gagne et prend les deux cartes
 	public void gagnePrend(Carte carteJ1, Carte carteJ2)
 	    {
 	        //System.out.print(name+" gagne \n");
 	        this.paquetJoueur.add(carteJ1);
 	        this.paquetJoueur.add(carteJ2);
 	    }
-	//SI il y'a égalité les joueurs reprennent leurs cartes, leurs paquet est à nouveau mélangé
+	//SI il y'a Egalité les joueurs reprennent leurs cartes, leurs paquets sont à re-mélangé
 	public void egalite(Carte carteJoueur) {
 		this.paquetJoueur.add(carteJoueur);
 		Collections.shuffle(this.paquetJoueur);
